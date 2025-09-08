@@ -43,7 +43,7 @@ const QuillEditor: FC<{ value: string; onChange: (value: string) => void }> = ({
   }, [value]);
 
   // Added fixed height and scroll class
-  return <div ref={editorRef} className="bg-white text-gray-900 rounded-md min-h-[50vh] h-[50vh] overflow-y-auto"></div>;
+  return <div ref={editorRef} className="bg-white text-gray-900 rounded-md min-h-[50vh] max-h-[90dvh] overflow-y-auto"></div>;
 };
 
 
@@ -238,7 +238,10 @@ const Editor: FC<{ onContentUpdate: () => void }> = ({ onContentUpdate }) => {
     <div className="flex flex-col md:flex-row gap-8">
       <aside className="w-full md:w-1/4 bg-gray-800 p-4 rounded-lg shadow-inner">
         <h2 className="text-xl font-semibold mb-4 border-b border-gray-600 pb-2">Chapters</h2>
-        <ul className="space-y-2">
+          <button onClick={handleAddChapter} className="w-full mt-4 bg-teal-500 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded-md transition-all duration-300">
+            + Add Chapter
+          </button>
+        <ul className="space-y-2 max-h-[90dvh] overflow-y-auto">
           {chapters.map(chapter => (
             <li
               key={chapter._id}
@@ -255,14 +258,11 @@ const Editor: FC<{ onContentUpdate: () => void }> = ({ onContentUpdate }) => {
                 onClick={(e: React.MouseEvent) => { e.stopPropagation(); handleDeleteChapter(chapter._id); }}
                 className="text-red-400 hover:text-red-200 text-sm flex-shrink-0"
               >
-                Delete
+                🗑️
               </button>
             </li>
           ))}
         </ul>
-        <button onClick={handleAddChapter} className="w-full mt-4 bg-teal-500 hover:bg-teal-400 text-white font-bold py-2 px-4 rounded-md transition-all duration-300">
-          + Add Chapter
-        </button>
       </aside>
       <section className="w-full md:w-3/4">
         {activeChapter ? (
