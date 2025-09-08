@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useState, useEffect, FC, useRef, DragEvent } from 'react';
 import { NextPage } from 'next';
 import Head from 'next/head';
@@ -282,7 +284,7 @@ const Editor: FC<{ onContentUpdate: () => void }> = ({ onContentUpdate }) => {
         ) : (
           <div className="text-center p-10 bg-gray-800 rounded-lg">
             <h2 className="text-2xl">No Chapters Yet</h2>
-            <p className="mt-2 text-gray-400">Click "Add Chapter" to begin your story.</p>
+            <p className="mt-2 text-gray-400">Click &quot;Add Chapter&quot; to begin your story.</p>
           </div>
         )}
       </section>
